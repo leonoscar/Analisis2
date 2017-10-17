@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SegundoController extends CI_Controller {
+class SegundoController extends Erp_Controller {
 
 	public function index()
 	{
