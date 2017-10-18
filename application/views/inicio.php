@@ -18,4 +18,4 @@
 		<section class="content">
 		</section>
 	</div>
-</div>		
+</div>	
