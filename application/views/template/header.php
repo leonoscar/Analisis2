@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Top Navigation</title>
+    <title>AS ERP</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -33,7 +33,7 @@
         <nav class="navbar navbar-static-top">
           <div class="container">
             <div class="navbar-header">
-              <a href="assets/adminlte/index2.html" class="navbar-brand"><b>Admin</b>LTE</a>
+              <a href="assets/adminlte/index2.html" class="navbar-brand"><b>AS</b> ERP</a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
               </button>
@@ -42,8 +42,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Inventarios <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Nomina</a></li>
+                <!--li><a href="#">Nomina</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas CxC <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
@@ -59,7 +58,8 @@
                 <li><a href="#">Bancos</a></li>
                 <li><a href="#">Cuentas x pagar</a></li>
                 <li><a href="#">Compras</a></li>
-                <li><a href="#">Seguridad</a></li>
+                <li><a href="#">Seguridad</a></li-->
+                <?php print $menu; ?>
               </ul>
               <!--form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -167,18 +167,18 @@
                       <!-- The user image in the navbar-->
                       <img src="assets/adminlte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                       <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                      <span class="hidden-xs">Alexander Pierce</span>
+                      <span class="hidden-xs"><?php print $nombre_usuario; ?></span>
                     </a>
                     <ul class="dropdown-menu">
                       <!-- The user image in the menu -->
                       <li class="user-header">
                         <img src="assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                         <p>
-                          Alexander Pierce - Web Developer
+                          <?php print $nombre_usuario; ?> - Web Developer
                           <small>Member since Nov. 2012</small>
                         </p>
                       </li>
-                      <!-- Menu Body -->
+                      <!-- Menu Body >
                       <li class="user-body">
                         <div class="col-xs-4 text-center">
                           <a href="#">Followers</a>
@@ -189,11 +189,11 @@
                         <div class="col-xs-4 text-center">
                           <a href="#">Friends</a>
                         </div>
-                      </li>
+                      </li-->
                       <!-- Menu Footer-->
                       <li class="user-footer">
                         <div class="pull-left">
-                          <a href="#" class="btn btn-default btn-flat">Profile</a>
+                          <!--a href="#" class="btn btn-default btn-flat">Profile</a-->
                         </div>
                         <div class="pull-right">
                           <a href="login/logout" class="btn btn-default btn-flat">Cerrar sesión</a>

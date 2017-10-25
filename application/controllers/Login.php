@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->load->model('seguridad/usuario', '', true);
+    }
+
 	public function index()
 	{
         if($this->session->userdata('logged_in')){
@@ -13,13 +20,6 @@ class Login extends CI_Controller {
 
         $this->load->view('template/login');		
 	}
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->load->model('usuario', '', true);
-    }
 
     public function getAccess()
     {
@@ -34,7 +34,7 @@ class Login extends CI_Controller {
             if($this->validateUser()){
                 redirect('inicio', 'refresh');
             }else{
-                $this->load->view('template/login');       
+                $this->load->view('template/login');
             }
         }
     }
@@ -47,14 +47,27 @@ class Login extends CI_Controller {
         $usuario = $this->usuario->getUser($password, $email);
 
         if($usuario){
+            $getModulos = $this->usuario->getModules($usuario->id_usuario);
+            $modulos = ($getModulos) ? $getModulos : false;
+
+            if($modulos != false){
+                foreach ($modulos as $modulo) {
+                    
+                    $roles = $this->usuario->getRoles($modulo->id_modulo);
+                    $roles_modulo = ($roles) ? $roles : false;
+                    $modulo->roles = $roles_modulo;
+                    
+                }
+            }
 
             $this->session->set_userdata('id_usuario', $usuario->id_usuario);
             $this->session->set_userdata('nombre_usuario', $usuario->correoe);
+            $this->session->set_userdata('modulos', $modulos);
             $this->session->set_userdata('logged_in', true);
 
             return true;
         }else{
-            $this->form_validation->set_message('validaUsuario', 'Usuario o contraseña incorrecta.');
+            $this->form_validation->set_message('validateUser', 'Usuario o contraseña incorrecta.');
         
             return false;
         }

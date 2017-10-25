@@ -16,7 +16,6 @@
 
 		<!-- Main content -->
 		<section class="content">
-			hjkhjkhuih hiuhiu h
 		</section>
 	</div>
 </div>	
