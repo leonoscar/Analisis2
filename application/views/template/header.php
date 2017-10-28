@@ -7,16 +7,16 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="assets/adminlte/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/adminlte/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="assets/adminlte/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/assets/adminlte/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="assets/adminlte/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/assets/adminlte/dist/css/skins/_all-skins.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,7 +33,7 @@
         <nav class="navbar navbar-static-top">
           <div class="container">
             <div class="navbar-header">
-              <a href="assets/adminlte/index2.html" class="navbar-brand"><b>AS</b> ERP</a>
+              <a href="/assets/adminlte/index2.html" class="navbar-brand"><b>AS</b> ERP</a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
               </button>
@@ -86,7 +86,7 @@
                             <a href="#">
                               <div class="pull-left">
                                 <!-- User Image -->
-                                <img src="assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="/assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                               </div>
                               <!-- Message title and timestamp -->
                               <h4>
@@ -165,14 +165,14 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <!-- The user image in the navbar-->
-                      <img src="assets/adminlte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                      <img src="/assets/adminlte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                       <!-- hidden-xs hides the username on small devices so only the image appears. -->
                       <span class="hidden-xs"><?php print $nombre_usuario; ?></span>
                     </a>
                     <ul class="dropdown-menu">
                       <!-- The user image in the menu -->
                       <li class="user-header">
-                        <img src="assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="/assets/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                         <p>
                           <?php print $nombre_usuario; ?> - Web Developer
                           <small>Member since Nov. 2012</small>

@@ -35,7 +35,7 @@ class ERP_Controller extends CI_Controller {
                   			<ul class='dropdown-menu' role='menu'>";
 
                 foreach ($modulo->roles as $rol) {
-                	$this->header['menu'] .= "<li><a href='{$rol->link_menu}'>{$rol->nombre}</a></li>";
+                	$this->header['menu'] .= "<li><a href='/{$rol->link_menu}'>{$rol->nombre}</a></li>";
                 }
 				
                 $this->header['menu'] .= " </ul>
