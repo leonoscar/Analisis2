@@ -59,7 +59,7 @@
                 <li><a href="#">Cuentas x pagar</a></li>
                 <li><a href="#">Compras</a></li>
                 <li><a href="#">Seguridad</a></li-->
-                <?php print $menu; ?>
+                <?php print (isset($menu)) ? $menu : ""; ?>
               </ul>
               <!--form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
