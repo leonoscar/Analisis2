@@ -25,11 +25,6 @@ Class Usuario extends CI_Model
         }
     }
 
-    public function getProfiles($id_user)
-    {
-
-    }
-
     public function getModules($id_usuario)
     {
         $this->query = "SELECT e.id_modulo, e.nombre_modulo, f.nombre, f.link_menu
@@ -66,5 +61,44 @@ Class Usuario extends CI_Model
         }else{
             return false;
         }                        
+    }
+
+    public function validateAccessModule($id_usuario,$id_modulo)
+    {
+        $this->query = "SELECT d.id_asignamodulo
+                        FROM sg_usuarios a
+                        INNER JOIN sg_asignaperfil b ON (b.id_usuario = a.id_usuario)
+                        INNER JOIN sg_perfiles c ON (c.id_perfil = b.id_perfil)
+                        INNER JOIN sg_asignamodulo d ON (d.id_perfil = c.id_perfil)
+                        WHERE d.id_modulo = $id_modulo
+                        AND a.id_usuario = $id_usuario";
+
+        $sql = $this->db->query($this->query);
+
+        if($sql->num_rows() > 0){
+            return $sql->result();
+        }else{
+            return false;
+        }          
+    }
+
+    public function validateRoleAccess($id_modulo,$id_rol,$id_usuario)
+    {
+        $this->query = "SELECT d.id_asignamodulo, e.id_rol
+                        FROM sg_usuarios a
+                        INNER JOIN sg_asignaperfil b ON (b.id_usuario = a.id_usuario)
+                        INNER JOIN sg_perfiles c ON (c.id_perfil = b.id_perfil)
+                        INNER JOIN sg_asignamodulo d ON (d.id_perfil = c.id_perfil)
+                        INNER JOIN sg_asignarol e ON (e.id_asignamodulo = d.id_asignamodulo)
+                        WHERE e.id_rol = $id_rol
+                        AND a.id_usuario = $id_usuario;";
+
+        $sql = $this->db->query($this->query);
+
+        if($sql->num_rows() > 0){
+            return $sql->result();
+        }else{
+            return false;
+        }          
     }
 }

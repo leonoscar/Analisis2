@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ERP_Controller extends CI_Controller {
 
 	public $header;
+	protected $moduleAccess;
 
 	public function __construct()
 	{
@@ -13,12 +14,39 @@ class ERP_Controller extends CI_Controller {
 			redirect('login', 'refresh');
 		}else{
 			$this->header['nombre_usuario'] = $this->session->nombre_usuario;
+			$this->load->model('seguridad/usuario', '', true);
 
 			if($this->session->modulos != false){
 				$this->createMenu();
 			}
 		}
         
+	}
+
+	protected function validateModuleAccess($id_modulo,$id_usuario)
+	{
+		$validateModule = $this->usuario->validateAccessModule($id_usuario,$id_modulo);
+
+		if($validateModule){
+			return true;
+		}else{
+			redirect('inicio', 'refresh');
+		}
+	}
+
+	protected function validateRoleAccess($module_access,$id_modulo,$id_role,$id_usuario)
+	{
+		if($module_access){
+			$validateRole = $this->usuario->validateRoleAccess($id_modulo,$id_role,$id_usuario);
+
+			if($validateRole){
+				return true;
+			}else{
+				redirect('inicio', 'refresh');
+			}			
+		}else{
+			redirect('inicio', 'refresh');
+		}
 	}
 
 	private function createMenu()
