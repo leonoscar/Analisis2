@@ -17,9 +17,7 @@
 		<!-- Main content -->
 		<section class="content">
 			<section class="row">
-				<div class="col-lg-2 col-lg-offset-5 loader" style="text-align:center; margin-bottom:10px; display:none">
-					<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-				</div>
+				<div class="col-lg-8 col-lg-offset-2" id="mensaje_modulos"></div>
 			</section>
 			<section class="row">
 				<div class="col-lg-12">
@@ -64,23 +62,26 @@
 				<h4 class="modal-title">Agregar nuevo modulo</h4>
 			</div>
 			<div class="modal-body">
+				<section class="row" id="add_modulo_msg"></section>
 				<div class="row">
 					<div class="col-lg-10 col-lg-offset-1">
 						<form method="POST" id="form_modulo">
+							<input type="hidden" name="id_modulo" id="id_modulo" value="0" />
 							<div class="form-group">
 								<label for="nombre_modulo">Nombre del modulo</label>
 								<input class="form-control" name="nombre_modulo" type="text" placeholder="Escriba el nombre del modulo" />
 							</div>
 							<div class="form-group">
 								<label for="descripcion">Descripción del modulo</label>
-								<textarea class="form-control" name="descrip_modulo" placeholder="Escriba una descripción para el nuevo modulo"></textarea>
+								<textarea class="form-control" name="descrip_modulo" id="descrip_modulo" placeholder="Escriba una descripción para el nuevo modulo">
+								</textarea>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+				<button type="button" id="cancelar" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
 				<button type="button" class="btn btn-primary" id="guardar_modulo">Guardar</button>
 			</div>
 		</div><!-- /.modal-content -->

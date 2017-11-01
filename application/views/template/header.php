@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="/assets/adminlte/dist/css/skins/_all-skins.min.css">
     <!-- jQuery 2.1.4 -->
     <script src="/assets/adminlte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery_blockUI.js"></script>
+    <script type="text/javascript" src="/assets/js/jqueryHelper.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

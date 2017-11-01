@@ -17,7 +17,17 @@ class Modulo extends ERP_Controller {
 		$data['modulos'] = "";
 
 		foreach ($modulos as $modulo) {
-			$estado = ($modulo->estado_num == 1) ? "label-success" : "label-danger";
+			if($modulo->estado_num == 1){
+				$estado = "label-success";
+				$tipo_btn = "btn-danger";
+				$icono = "fa-times";
+				$action = "disabled";
+			}else{
+				$estado = "label-danger";
+				$tipo_btn = "btn-success";
+				$icono = "fa-check";
+				$action = "enabled";
+			}
 
 			$data['modulos'] .=	"	<tr>
 										<td>{$modulo->nombre_modulo}</td>
@@ -26,8 +36,8 @@ class Modulo extends ERP_Controller {
 											<label class='label {$estado}'>{$modulo->estado}</label>
 										</td>
 										<td>
-											<button class='btn btn-default btn-xs fa fa-times'></button>
-											<button class='btn btn-default btn-xs fa fa-edit'></button>
+											<button class='btn $tipo_btn btn-xs fa $icono estado_modulo' name='$action' id='{$modulo->id_modulo}'></button>
+											<button class='btn btn-default btn-xs fa fa-edit edit_modulo' id='{$modulo->id_modulo}'></button>
 										</td>
 									</tr>"; 			
 		}
@@ -48,6 +58,18 @@ class Modulo extends ERP_Controller {
 			$data['response'] = true;
 
 			foreach ($modulos as $modulo) {
+				if($modulo->estado_num == 1){
+					$estado = "label-success";
+					$tipo_btn = "btn-danger";
+					$icono = "fa-times";
+					$action = "disabled";
+				}else{
+					$estado = "label-danger";
+					$tipo_btn = "btn-success";
+					$icono = "fa-check";
+					$action = "enabled";
+				}
+
 				$estado = ($modulo->estado_num == 1) ? "label-success" : "label-danger";
 
 				$data['modulos'] .=	"	<tr>
@@ -57,8 +79,8 @@ class Modulo extends ERP_Controller {
 												<label class='label {$estado}'>{$modulo->estado}</label>
 											</td>
 											<td>
-												<button class='btn btn-default btn-xs fa fa-times'></button>
-												<button class='btn btn-default btn-xs fa fa-edit'></button>
+												<button class='btn $tipo_btn btn-xs fa $icono estado_modulo' name='$action' id='{$modulo->id_modulo}'></button>
+												<button class='btn btn-default btn-xs fa fa-edit edit_modulo' id='{$modulo->id_modulo}'></button>
 											</td>
 										</tr>"; 			
 			}			
@@ -72,15 +94,78 @@ class Modulo extends ERP_Controller {
 
 
 	public function saveModulo()
+	{	
+		$data = Array(
+					'response' => false,
+					'result_db' => true,
+					'message' => ''
+				);
+
+
+        $this->form_validation->set_rules('nombre_modulo', 'Nombre del modulo', 'trim|required|regex_match[/^[a-zA-ZñÑ ]+$/]');
+        $this->form_validation->set_rules('descrip_modulo', 'Descripción del modulo', 'trim|regex_match[/^[a-zA-ZñÑ.,; ]+$/]|required');
+
+        if($this->form_validation->run() === true){
+        	if($this->input->post('id_modulo',true) > 0){
+        		$save = $this->modelomodulo->editModule(
+        									$this->input->post('id_modulo',true),
+        									$this->input->post('nombre_modulo',true),
+        									$this->input->post('descrip_modulo',true));
+        		$accion = "editado";
+        		$msg_accion = "editar";
+			}else{
+        		$save = $this->modelomodulo->saveModule(
+        									$this->input->post('nombre_modulo',true),
+        									$this->input->post('descrip_modulo',true));
+        		$accion = "creado";
+        		$msg_accion = "guardar";
+			}
+
+        	if($save){
+        		$data['response'] = true;
+        		$data['message'] = "Modulo {$accion} correctamente.";
+        	}else{
+        		$data['result_db'] = false;
+        		$data['message'] = "No se ha podido {$msg_accion} la información.";
+        	}
+        }else{
+        	$data['message'] = validation_errors('<li>','</li>');
+        }
+
+        echo json_encode($data);
+	}
+
+	public function changeStateModule()
 	{
-        $this->form_validation->set_rules('correo', 'correo', 'trim|required');
-        $this->form_validation->set_rules('contrasena', 'contrasena', 'trim|required');
+		$data = Array(
+					'response' => false,
+					'result_db' => true,
+					'message' => ''
+				);
 
-        if($this->form_validation->run() == FALSE)
-        {
+		$estado = ($this->input->post('accion') == 'enabled') ? 1 : 0;
 
-		
-		$this->modelomodulo->saveModule($nombre,$descripcion);
-		echo "si llego la informacion" . " " . $_POST['descrip_modulo'];
+		$changeState = $this->modelomodulo->enabledDisabledModule($this->input->post('id_modulo',true),$estado);
+
+		if($changeState){
+			$data['response'] = true;
+			$data['message'] = "Se ha cambiado el estado el modulo seleccionado correctamente.";
+		}else{
+			$data['message'] = "No se ha podido cambiar el estado del modulo.";
+		}
+
+		echo json_encode($data);
+	}
+
+	public function getModuleInfo()
+	{
+
+		$getModule = $this->modelomodulo->getModuleById($this->input->post('id_modulo',true));
+
+		if($getModule){
+			echo json_encode($getModule);
+		}else{
+			return false;
+		}
 	}
 }

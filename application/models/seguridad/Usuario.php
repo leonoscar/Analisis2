@@ -29,12 +29,13 @@ Class Usuario extends CI_Model
     {
         $this->query = "SELECT e.id_modulo, e.nombre_modulo, f.nombre, f.link_menu
                         FROM sg_usuarios a
-                        inner join sg_asignaperfil b ON (b.id_usuario = a.id_usuario)
-                        inner join sg_perfiles c ON (c.id_perfil = b.id_perfil)
-                        inner join sg_asignamodulo d ON (d.id_perfil = c.id_perfil)
-                        inner join sg_modulos e ON (e.id_modulo = d.id_modulo)
-                        inner join sg_menu f ON (f.id_modulo = e.id_modulo)
-                        where a.id_usuario = $id_usuario
+                        INNER JOIN sg_asignaperfil b ON (b.id_usuario = a.id_usuario)
+                        INNER JOIN sg_perfiles c ON (c.id_perfil = b.id_perfil)
+                        INNER JOIN sg_asignamodulo d ON (d.id_perfil = c.id_perfil)
+                        INNER JOIN sg_modulos e ON (e.id_modulo = d.id_modulo)
+                        INNER JOIN sg_menu f ON (f.id_modulo = e.id_modulo)
+                        WHERE a.id_usuario = $id_usuario
+                        AND e.estado = 1
                         ORDER BY f.nombre ASC;";
 
         $sql = $this->db->query($this->query);
