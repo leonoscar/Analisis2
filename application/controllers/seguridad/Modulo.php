@@ -8,6 +8,9 @@ class Modulo extends ERP_Controller {
 		parent::__construct();	
 
 		$this->load->model('seguridad/modelomodulo','',true);
+
+		$this->moduleAccess = $this->validateModuleAccess(2,$this->session->id_usuario);
+		$this->validateRoleAccess($this->moduleAccess,2,2,$this->session->id_usuario);
 	}
 
 	public function listarModulos()
