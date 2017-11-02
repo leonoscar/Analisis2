@@ -67,8 +67,7 @@
 							</div>
 							<div class="form-group">
 								<label for="descripcion">Descripción del perfil</label>
-								<textarea class="form-control" name="descrip_perfil" id="descrip_perfil" placeholder="Escriba una descripción para el nuevo perfil">
-								</textarea>
+								<textarea class="form-control" name="descrip_perfil" id="descrip_perfil" placeholder="Escriba una descripción para el nuevo perfil"></textarea>
 							</div>
 						</form>
 					</div>

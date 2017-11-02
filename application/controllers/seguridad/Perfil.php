@@ -9,8 +9,8 @@ class Perfil extends ERP_Controller {
 
 		$this->load->model('seguridad/modeloperfil','',true);
 
-		$this->PerfilAccess = $this->validateModuleAccess(2,$this->session->id_usuario);
-		$this->validateRoleAccess($this->PerfilAccess,2,3,$this->session->id_usuario);
+		$this->moduleAccess = $this->validateModuleAccess(2,$this->session->id_usuario);
+		$this->validateRoleAccess($this->moduleAccess,2,3,$this->session->id_usuario);
 	}
 
 	public function listarPerfiles()
@@ -50,7 +50,7 @@ class Perfil extends ERP_Controller {
 		$this->load->view('template/footer');
 	}
 
-	public function listarperfilesAjax()
+	public function listarPerfilesAjax()
 	{
 		$perfiles = $this->modeloperfil->getPerfiles();
 
@@ -96,7 +96,7 @@ class Perfil extends ERP_Controller {
 	}
 
 
-	public function saveperfil()
+	public function savePerfil()
 	{	
 		$data = Array(
 					'response' => false,
@@ -152,7 +152,7 @@ class Perfil extends ERP_Controller {
 
 		if($changeState){
 			$data['response'] = true;
-			$data['message'] = "Se ha cambiado el estado el perfil seleccionado correctamente.";
+			$data['message'] = "Se ha cambiado el estado del perfil seleccionado correctamente.";
 		}else{
 			$data['message'] = "No se ha podido cambiar el estado del perfil.";
 		}

@@ -152,7 +152,7 @@ class Modulo extends ERP_Controller {
 
 		if($changeState){
 			$data['response'] = true;
-			$data['message'] = "Se ha cambiado el estado el modulo seleccionado correctamente.";
+			$data['message'] = "Se ha cambiado el estado del modulo seleccionado correctamente.";
 		}else{
 			$data['message'] = "No se ha podido cambiar el estado del modulo.";
 		}
