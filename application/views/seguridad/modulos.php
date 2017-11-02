@@ -33,6 +33,8 @@
 									<tr>
 										<th>Nombre</th>
 										<th>Descripcion</th>
+										<th>Nombre item</th>
+										<th>Link menu</th>
 										<th>Estado</th>
 										<th>Acciones</th>
 									</tr>
@@ -67,9 +69,16 @@
 							</div>
 							<div class="form-group">
 								<label for="descripcion">Descripción del modulo</label>
-								<textarea class="form-control" name="descrip_modulo" id="descrip_modulo" placeholder="Escriba una descripción para el nuevo modulo">
-								</textarea>
+								<textarea class="form-control" name="descrip_modulo" id="descrip_modulo" placeholder="Escriba una descripción para el nuevo modulo"></textarea>
 							</div>
+							<div class="form-group">
+								<label for="nombre_item">Nombre opcion de menu</label>
+								<input class="form-control" type="text" name="nombre_item" placeholder="Escriba el nombre del item para menu" />
+							</div>
+							<div class="form-group">
+								<label for="link_submenu">Link opcion del menu</label>
+								<input class="form-control" type="text" name="link_menu" placeholder="Escriba el link para este item. Ej. seguridad/perfil/listarperfiles" />	
+							</div>							
 						</form>
 					</div>
 				</div>

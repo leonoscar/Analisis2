@@ -26,6 +26,9 @@ $(document).ready(function(){
 						$('#myModal').modal('hide');
 						$('input[name=nombre_modulo]').val('');
 						$('#descrip_modulo').val('');
+						$('input[name=nombre_item]').val('');
+						$('input[name=link_menu]').val('');
+						$('#add_modulo_msg').html('');
 						showMessage('mensaje_modulos','success','',result['message']);
 						cargarReporteModulos();
 					}
@@ -81,6 +84,8 @@ $(document).ready(function(){
 				var respuesta = JSON.parse(data);
 				$('input[name=nombre_modulo]').val(respuesta['nombre_modulo']);
 				$('#descrip_modulo').val(respuesta['descrip_modulo']);
+				$('input[name=nombre_item]').val(respuesta['nombre']);
+				$('input[name=link_menu]').val(respuesta['link_menu']);	
 				$('#myModal').modal('show');
 			}
 		});
@@ -89,5 +94,8 @@ $(document).ready(function(){
 	$("#cancelar").click(function(){
 		$('input[name=nombre_modulo]').val('');
 		$('#descrip_modulo').val('');
+		$('input[name=nombre_item]').val('');
+		$('input[name=link_menu]').val('');		
+		$('#add_modulo_msg').html('');
 	});
 });

@@ -27,6 +27,7 @@ $(document).ready(function(){
 						$('input[name=nombre_rol]').val('');
 						$('#descrip_rol').val('');
 						$("#form_submenu").empty();
+						$('#add_rol_msg').html('');
 						$("#item_menu").prop('checked', false);
 						showMessage('mensaje_Roles','success','',result['message']);
 						cargarReporteRoles();
@@ -99,7 +100,8 @@ $(document).ready(function(){
 	$("#cancelar").click(function(){
 		$('input[name=nombre_rol]').val('');
 		$('#descrip_rol').val('');
-		$("#form_submenu").empty();		
+		$("#form_submenu").empty();
+		$('#add_rol_msg').html('');
 		$("#item_menu").prop('checked', false);
 		$("#form_submenu").empty();
 	});
@@ -109,7 +111,7 @@ $(document).ready(function(){
 	});
 
 	function showFormMenu(){
-		var nuevo_form = '	<div class="col-lg-10 col-lg-offset-1">' +
+		var nuevo_form = '<div class="col-lg-10 col-lg-offset-1">' +
 							'<div class="form-group">' +
 								'<label for="nombre_item">Nombre del item</label>' +
 								'<input class="form-control" type="text" name="nombre_item" placeholder="Escriba el nombre del item para menu" />' +

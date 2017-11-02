@@ -26,6 +26,7 @@ $(document).ready(function(){
 						$('#myModal').modal('hide');
 						$('input[name=nombre_perfil]').val('');
 						$('#descrip_perfil').val('');
+						$('#add_perfil_msg').html('');
 						showMessage('mensaje_perfiles','success','',result['message']);
 						cargarReportePerfiles();
 					}
@@ -89,5 +90,6 @@ $(document).ready(function(){
 	$("#cancelar").click(function(){
 		$('input[name=nombre_perfil]').val('');
 		$('#descrip_perfil').val('');
+		$('#add_perfil_msg').html('');
 	});
 });

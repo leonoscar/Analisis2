@@ -35,6 +35,8 @@ class Modulo extends ERP_Controller {
 			$data['modulos'] .=	"	<tr>
 										<td>{$modulo->nombre_modulo}</td>
 										<td>{$modulo->descrip_modulo}</td>
+										<td>{$modulo->nombre}</td>
+										<td>{$modulo->link_menu}</td>
 										<td>
 											<label class='label {$estado}'>{$modulo->estado}</label>
 										</td>
@@ -78,6 +80,8 @@ class Modulo extends ERP_Controller {
 				$data['modulos'] .=	"	<tr>
 											<td>{$modulo->nombre_modulo}</td>
 											<td>{$modulo->descrip_modulo}</td>
+											<td>{$modulo->nombre}</td>
+											<td>{$modulo->link_menu}</td>
 											<td>
 												<label class='label {$estado}'>{$modulo->estado}</label>
 											</td>
@@ -107,6 +111,8 @@ class Modulo extends ERP_Controller {
 
         $this->form_validation->set_rules('nombre_modulo', 'Nombre del modulo', 'trim|required|regex_match[/^[a-zA-ZñÑ ]+$/]');
         $this->form_validation->set_rules('descrip_modulo', 'Descripción del modulo', 'trim|regex_match[/^[a-zA-ZñÑ.,; ]+$/]|required');
+        $this->form_validation->set_rules('nombre_item', 'Nombre del menu', 'trim|required|regex_match[/^[a-zA-ZñÑ ]+$/]');
+        $this->form_validation->set_rules('link_menu', 'Link del menu', 'trim|regex_match[/^[a-z\/ ]+$/]');
 
         if($this->form_validation->run() === true){
         	if($this->input->post('id_modulo',true) > 0){
@@ -114,12 +120,25 @@ class Modulo extends ERP_Controller {
         									$this->input->post('id_modulo',true),
         									$this->input->post('nombre_modulo',true),
         									$this->input->post('descrip_modulo',true));
+
+        		if($save){
+					$save = $this->modelomodulo->editMenuItem(
+        													$this->input->post('nombre_item',true),
+        													$this->input->post('link_menu',true),
+        													$this->input->post('id_modulo',true));
+        		}
+
         		$accion = "editado";
         		$msg_accion = "editar";
 			}else{
         		$save = $this->modelomodulo->saveModule(
         									$this->input->post('nombre_modulo',true),
         									$this->input->post('descrip_modulo',true));
+
+        		if($save){
+        			$save = $this->modelomodulo->saveMenuItem($this->input->post('nombre_item',true),$this->input->post('link_menu',true),$save);
+        		}
+
         		$accion = "creado";
         		$msg_accion = "guardar";
 			}
