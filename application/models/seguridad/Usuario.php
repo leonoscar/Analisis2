@@ -51,10 +51,11 @@ Class Usuario extends CI_Model
     {
         $this->query = "SELECT c.id_rol, c.nombre_rol, d.nombre, d.link_menu
                         FROM sg_asignamodulo a
-                        inner join sg_asignarol b ON (b.id_asignamodulo = a.id_asignamodulo)
-                        inner join sg_roles c ON (c.id_rol = b.id_rol)
-                        inner join sg_submenu d ON (d.id_rol = c.id_rol)
-                        WHERE a.id_modulo = $id_modulo";
+                        INNER JOIN sg_asignarol b ON (b.id_asignamodulo = a.id_asignamodulo)
+                        INNER JOIN sg_roles c ON (c.id_rol = b.id_rol)
+                        INNER JOIN sg_submenu d ON (d.id_rol = c.id_rol)
+                        WHERE a.id_modulo = $id_modulo
+                        AND c.estado_rol = 1";
         $sql = $this->db->query($this->query);
 
         if($sql->num_rows() > 0){

@@ -18,4 +18,5 @@ thumbs.db
 
 *wsdls/*
 
-*assets/*
+*assets/adminlte
+*assets/js/jquery_3_1_1.js
