@@ -29,7 +29,7 @@ $(document).ready(function(){
 						$("#form_submenu").empty();
 						$('#add_rol_msg').html('');
 						$("#item_menu").prop('checked', false);
-						showMessage('mensaje_Roles','success','',result['message']);
+						showMessage('mensaje_roles','success','',result['message']);
 						cargarReporteRoles();
 					}
 				}
