@@ -9,8 +9,8 @@ class Perfil extends ERP_Controller {
 
 		$this->load->model('seguridad/modeloperfil','',true);
 
-		$this->moduleAccess = $this->validateModuleAccess(2,$this->session->id_usuario);
-		$this->validateRoleAccess($this->moduleAccess,2,3,$this->session->id_usuario);
+		$this->moduleAccess = $this->validateModuleAccess(1,$this->session->id_usuario);
+		$this->validateRoleAccess($this->moduleAccess,1,2,$this->session->id_usuario);
 	}
 
 	public function listarPerfiles()
