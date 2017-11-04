@@ -34,22 +34,30 @@
 			  			<table class="table table-striped table-bordered " cellspacing="0" id="tbDetalleProductos" style="width:100%;">
 						    <thead class="thead-inverse">
 						        <tr>
-						            <th>No.</th>
+						            <th>Nombre</th>
 						            <th>Descripcion</th>
-						            <th>Cantidad</th>
+						            <th>Acciones</th>
 						        </tr>
 						    </thead>
 						    <tbody>
-						        <tr>
-						            <td>1</td>
-						            <td>Galones de Gas Propano</td>
-						            <td>3</td>
+						        <!--tr>
+						            <td>Productos 1</td>
+						            <td>Descripcion de Producto 1</td>
+						            <td>
+						            	<button type="button" class="btn btn-link">
+								  			<span class="glyphicon glyphicon-pencil"></span>Editar
+								  		</button>
+								  		|
+								  		<button type="button" class="btn btn-link">
+								  			<span class="glyphicon glyphicon-remove"></span>Eliminar
+								  		</button>
+						            </td>
 						        </tr>
 						        <tr>
-						            <td>2</td>
-						            <td>Vehiculos de carga</td>
-						            <td>1</td>
-						        </tr>
+						            <td>Productos 2</td>
+						            <td>Descripcion de Producto 2</td>
+						            <td>Descripcion de Producto 1</td>
+						        </tr-->
 						    </tbody>
 						</table>
 			  		</div>
