@@ -14,7 +14,8 @@ Class Usuario extends CI_Model
                         AND     a.correoe = '$email'
                         AND     b.id_perfil = 1
                         AND     c.estado_perfil = 1
-                        AND     a.estado = 1;";
+                        AND     a.estado = 1
+                        AND     b.estado = 1;";
 
         $sql = $this->db->query($this->query);
 
@@ -29,13 +30,14 @@ Class Usuario extends CI_Model
     {
         $this->query = "SELECT e.id_modulo, e.nombre_modulo, f.nombre, f.link_menu
                         FROM sg_usuarios a
-                        INNER JOIN sg_asignaperfil b ON (b.id_usuario = a.id_usuario)
-                        INNER JOIN sg_perfiles c ON (c.id_perfil = b.id_perfil)
+                        INNER JOIN sg_asignaperfil b ON (b.id_usuario = a.id_usuario AND b.estado = 1)
+                        INNER JOIN sg_perfiles c ON (c.id_perfil = b.id_perfil AND c.estado_perfil = 1)
                         INNER JOIN sg_asignamodulo d ON (d.id_perfil = c.id_perfil)
                         INNER JOIN sg_modulos e ON (e.id_modulo = d.id_modulo)
                         INNER JOIN sg_menu f ON (f.id_modulo = e.id_modulo)
                         WHERE a.id_usuario = $id_usuario
                         AND e.estado = 1
+                        AND a.estado = 1
                         ORDER BY f.nombre ASC;";
 
         $sql = $this->db->query($this->query);

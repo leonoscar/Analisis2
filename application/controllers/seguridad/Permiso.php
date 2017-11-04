@@ -85,7 +85,7 @@ class Permiso extends ERP_Controller {
 					'message' => ''
 				);
 
-		$estado = ($this->input->post('action')) ? 1 : 0;
+		$estado = ($this->input->post('action') == 'asignar') ? 1 : 0;
 
 		$changeState = $this->modelopermiso->asignarDesasignarPerfil(
 																	$this->input->post('codusuario',true),
